@@ -3,263 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tashfia Tabassum | Professional Portfolio</title>
+    <title>Tashfia Tabassum | Portfolio</title>
     <style>
-        :root {
-            --primary: #1a237e; /* Indigo */
-            --secondary: #283593; /* Lighter Indigo */
-            --text-dark: #2b2b2b;
-            --text-light: #ffffff;
-            --bg-page: #f4f7f6;
-            --bg-card: #ffffff;
-            --border: #e0e0e0;
-        }
-
         body {
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-page);
-            display: flex;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            width: 260px;
-            background-color: var(--primary);
-            color: var(--text-light);
-            height: 100vh;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 1rem;
-            box-sizing: border-box;
-        }
-
-        .sidebar-section { margin-bottom: 2.5rem; }
-        .sidebar-section h3 {
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: #c5cae9;
-            margin-bottom: 0.8rem;
-        }
-        .sidebar-section p { margin: 0.3rem 0; font-size: 0.95rem; }
-
-        /* Main Content Styling */
-        .main-content {
-            margin-left: 260px;
-            flex-grow: 1;
-            padding: 2rem 3rem;
-            box-sizing: border-box;
-        }
-
-        /* Hero Header */
-        .header-container {
-            background-color: var(--bg-card);
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
+            background-color: #ffffff;
         }
 
+        /* Header Styling */
+        header {
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            /* Fixed: head cut off. Use 'contain' to see the full image,
-               or provide a square image with headroom. */
-            object-fit: contain;
-            margin-right: 2.5rem;
-            border: 3px solid var(--primary);
-            background-color: #eee; /* placeholder background */
+            object-fit: contain; /* Ensures the head is not cut off */
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            margin: 0 0 0.3rem 0;
+            font-size: 2.5rem;
+            color: #111;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+        .contact-info a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
-        .header-text h1 { margin: 0; font-size: 2.8rem; color: #111; }
-        .subtitle { font-size: 1.2rem; font-weight: 500; color: var(--secondary); margin: 0.3rem 0 1rem 0; }
-        .contact-info { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.95rem; }
-        .contact-info a { color: var(--secondary); text-decoration: none; font-weight: 500;}
-        .contact-info a:hover { text-decoration: underline; }
-
-        /* General Section Titles */
+        /* Section Styling */
         h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.3rem;
+            color: #111;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.4rem;
             margin-top: 2.5rem;
             margin-bottom: 1.5rem;
         }
+        h3 {
+            font-size: 1.1rem;
+            color: #222;
+            margin: 0 0 0.3rem 0;
+        }
 
-        /* Skill Tags */
-        .skills-list {
+        /* Content Formatting */
+        .meta-info {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 0;
-            list-style: none;
+            justify-content: space-between;
+            font-style: italic;
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
-        .skills-list li {
-            background-color: var(--secondary);
-            color: var(--text-light);
-            padding: 6px 14px;
-            border-radius: 20px;
+        .tech-stack {
+            font-weight: 600;
+            color: #444;
             font-size: 0.9rem;
-            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            margin-top: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5rem;
+            text-align: justify;
+        }
+        .item-container {
+            margin-bottom: 1.8rem;
         }
 
-        /* Project & Experience Cards */
-        .card {
-            background-color: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-        }
-        
-        .card h3 { margin: 0 0 0.5rem 0; color: #111; font-size: 1.2rem; }
-        .project-tech { font-weight: 600; color: #666; font-size: 0.9rem; margin-top: 0; margin-bottom: 1rem; }
-        .meta-info { display: flex; justify-content: space-between; font-style: italic; color: #555; margin-bottom: 0.8rem; font-size: 0.9rem; }
-        
-        ul.desc-list { margin-top: 0.5rem; padding-left: 18px; list-style-type: circle; }
-        ul.desc-list li { margin-bottom: 0.6rem; font-size: 0.95rem; text-align: justify;}
-
-        /* Mobile Responsiveness */
-        @media (max-width: 900px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; }
-            .main-content { margin-left: 0; padding: 2rem; }
-            .header-container { flex-direction: column; text-align: center; }
-            .profile-img { margin-right: 0; margin-bottom: 1.5rem; }
-            .contact-info { justify-content: center; }
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .meta-info {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav class="sidebar">
-        <div class="sidebar-section">
-            <h3>Education</h3>
-            <p><strong>Oregon State University</strong></p>
-            <p>B.S. in Computer Science</p>
-            <p>(Artificial Intelligence Focus)</p>
-            <p>Expected Jun 2027</p>
+    <header>
+        <img src="profile.jpg" alt="Tashfia Tabassum" class="profile-img">
+        <h1>Tashfia Tabassum</h1>
+        <div class="subtitle">Bachelor of Science in Computer Science (Artificial Intelligence Focus)</div>
+        <div class="contact-info">
+            <a href="mailto:tabassut@oregonstate.edu">tabassut@oregonstate.edu</a> | 
+            <a href="mailto:tashfiat715@gmail.com">tashfiat715@gmail.com</a> | 
+            <span>458-272-8932</span>
         </div>
-        <div class="sidebar-section">
-            <h3>Honors</h3>
-            <p>Dean's List</p>
-            <p>(8 Consecutive Terms)</p>
-            <p><strong>GPA: 3.82</strong></p>
+        <div class="contact-info" style="margin-top: 0.3rem;">
+            <a href="https://github.com/Tashfia715" target="_blank">GitHub</a> | 
+            <a href="#" target="_blank">LinkedIn</a>
         </div>
-    </nav>
+    </header>
 
-    <main class="main-content">
-        <header class="header-container">
-            <!-- Ensure your image file is named 'profile.jpg' and is in the same repository.
-                 'object-fit: contain' ensures the whole head is visible. -->
-            <img src="profile.jpg" alt="Tashfia Tabassum" class="profile-img">
-            <div class="header-text">
-                <h1>Tashfia Tabassum</h1>
-                <div class="subtitle">Computer Science (AI Focus) @ Oregon State University</div>
-                <div class="contact-info">
-                    <a href="mailto:tashfiat715@gmail.com">tashfiat715@gmail.com</a> |
-                    <a href="mailto:tabassut@oregonstate.edu">tabassut@oregonstate.edu</a> |
-                    <span>458-272-8932</span>
-                </div>
-                <div class="contact-info" style="margin-top: 0.5rem;">
-                    <a href="https://github.com/Tashfia715" target="_blank">GitHub</a> |
-                    <a href="#" target="_blank">LinkedIn</a>
-                </div>
+    <section>
+        <h2>Education</h2>
+        <div class="item-container">
+            <h3>Oregon State University</h3>
+            <div class="meta-info">
+                <span>Bachelor of Science in Computer Science (Artificial Intelligence Focus)</span>
+                <span>Expected Graduation: Jun 2027</span>
             </div>
-        </header>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-                <li>Python</li><li>Java</li><li>C/C++</li><li>JavaScript</li><li>SQL</li>
-                <li>React</li><li>Django</li><li>FastAPI</li><li>TensorFlow</li><li>PyTorch</li><li>Scikit-learn</li>
-                <li>Git</li><li>GitHub</li>
-                <li>Machine Learning</li><li>Artificial Intelligence</li><li>NLP</li><li>Data Analysis</li><li>Computer Vision</li>
-                <li>Research Communication</li><li>Team Collaboration</li><li>Problem Solving</li><li>Technical Writing</li>
+            <ul>
+                <li><strong>Honors:</strong> Dean's List - 8 Consecutive Terms | <strong>GPA:</strong> 3.82</li>
             </ul>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Projects</h2>
-            
-            <div class="card">
-                <h3>AI Health Symptom Checker</h3>
-                <p class="project-tech">Python · XGBoost · MedSpaCy · SMOTE · SHAP · TF-IDF</p>
-                <ul class="desc-list">
-                    <li>Built a clinical NLP system using MedSpaCy to extract symptoms from free text, classify conditions with an XGBoost + TF-IDF pipeline, and flag urgent symptoms via a rule-based severity engine.</li>
-                    <li>Applied SMOTE for class imbalance, stratified k-fold cross-validation for robustness, and SHAP for explainable per-condition predictions.</li>
-                </ul>
-            </div>
+    <section>
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Programming Languages:</strong> Python, Java, C/C++, JavaScript, SQL</li>
+            <li><strong>Frameworks & Tools:</strong> React, Django, FastAPI, TensorFlow, PyTorch, Scikit-learn</li>
+            <li><strong>Version Control:</strong> Git, GitHub</li>
+            <li><strong>Technical Areas:</strong> Machine Learning, Artificial Intelligence, NLP, Data Analysis, Computer Vision</li>
+            <li><strong>Soft Skills:</strong> Research Communication, Team Collaboration, Problem Solving, Technical Writing</li>
+        </ul>
+    </section>
 
-            <div class="card">
-                <h3>Person Identification System</h3>
-                <p class="project-tech">Python · TensorFlow · FaceNet · MTCNN · FastAPI · HTML, JS</p>
-                <ul class="desc-list">
-                    <li>Built a real-time face recognition pipeline using MTCNN for detection and FaceNet embeddings with cosine similarity, achieving 0.5 - 1.0s per-image inference.</li>
-                    <li>Served the model via a FastAPI REST endpoint and built an HTML/JS web interface for multi-person identification with confidence scoring.</li>
-                </ul>
-            </div>
+    <section>
+        <h2>Projects</h2>
+        
+        <div class="item-container">
+            <h3>AI Health Symptom Checker</h3>
+            <p class="tech-stack">Python · XGBoost · MedSpaCy · SMOTE · SHAP · TF-IDF</p>
+            <ul>
+                <li>Built a clinical NLP system using MedSpaCy to extract symptoms from free text, classify conditions with an XGBoost + TF-IDF pipeline, and flag urgent symptoms via a rule-based severity engine.</li>
+                <li>Applied SMOTE for class imbalance, stratified k-fold cross-validation for robustness, and SHAP for explainable per-condition predictions.</li>
+            </ul>
+        </div>
 
-            <div class="card">
-                <h3>Sentiment Analysis with Transformers</h3>
-                <p class="project-tech">Python · PyTorch · XLM-RoBERTa · RoBERTa · DistilBERT · ALBERT</p>
-                <ul class="desc-list">
-                    <li>Fine-tuned and benchmarked four BERT-variant models on a 1.6M-sample dataset with learning rate scheduling, early stopping, and class-weight balancing.</li>
-                    <li>Built a unified evaluation framework tracking accuracy, precision, recall, and F1; supported flexible per-model CLI inference with automatic tokenization.</li>
-                </ul>
-            </div>
+        <div class="item-container">
+            <h3>Person Identification System</h3>
+            <p class="tech-stack">Python · TensorFlow · FaceNet · MTCNN · FastAPI · HTML, JS</p>
+            <ul>
+                <li>Built a real-time face recognition pipeline using MTCNN for detection and FaceNet embeddings with cosine similarity, achieving 0.5 - 1.0s per-image inference.</li>
+                <li>Served the model via a FastAPI REST endpoint and built an HTML/JS web interface for multi-person identification with confidence scoring.</li>
+            </ul>
+        </div>
 
-            <div class="card">
-                <h3>EcoRoute</h3>
-                <p class="project-tech">Python · React · Route Optimization · Geospatial APIs</p>
-                <ul class="desc-list">
-                    <li>Developed a full-stack app recommending low-carbon commute routes via graph traversal and real-time environmental data, with a React frontend and Python backend.</li>
-                </ul>
-            </div>
-        </section>
+        <div class="item-container">
+            <h3>Sentiment Analysis with Transformers</h3>
+            <p class="tech-stack">Python · PyTorch · XLM-RoBERTa · RoBERTa · DistilBERT · ALBERT</p>
+            <ul>
+                <li>Fine-tuned and benchmarked four BERT-variant models on a 1.6M-sample dataset with learning rate scheduling, early stopping, and class-weight balancing.</li>
+                <li>Built a unified evaluation framework tracking accuracy, precision, recall, and F1; supported flexible per-model CLI inference with automatic tokenization.</li>
+            </ul>
+        </div>
 
-        <section>
-            <h2>Work Experience</h2>
-            
-            <div class="card">
-                <h3>Undergraduate Learning Assistant</h3>
-                <div class="meta-info">
-                    <span>College of Science, Oregon State University</span>
-                    <span>Sep. 2025 - Present</span>
-                </div>
-                <ul class="desc-list">
-                    <li>Supported 3 undergraduate CS courses per term, holding weekly office hours for a combined cohort of 120+ students and improving average section performance by an estimated 15%.</li>
-                    <li>Collaborated with 4 faculty members on quiz design and instructional planning, reducing grading turnaround time by approximately 20%.</li>
-                    <li>Provided individualized guidance in data structures, algorithms, and AI fundamentals to improve first-submission pass rates.</li>
-                </ul>
-            </div>
+        <div class="item-container">
+            <h3>EcoRoute</h3>
+            <p class="tech-stack">Python · React · Route Optimization · Geospatial APIs</p>
+            <ul>
+                <li>Developed a full-stack app recommending low-carbon commute routes via graph traversal and real-time environmental data, with a React frontend and Python backend.</li>
+            </ul>
+        </div>
 
-            <div class="card">
-                <h3>Undergraduate Lab Assistant</h3>
-                <div class="meta-info">
-                    <span>College of Engineering (MIME), Oregon State University</span>
-                    <span>Jun. 2024 - Present</span>
-                </div>
-                <ul class="desc-list">
-                    <li>Participated in weekly lab meetings, contributing literature reviews to support faculty-led research projects.</li>
-                    <li>Collaborated with graduate researchers to evaluate project challenges, reducing experimental iteration cycles by ~25%.</li>
-                </ul>
+        <div class="item-container">
+            <h3>Feedback Analyzer</h3>
+            <p class="tech-stack">Python · Scikit-learn · NLP · Supervised Classification</p>
+            <ul>
+                <li>Built an end-to-end ML pipeline for feedback classification using TF-IDF feature extraction, cross-validated classifiers, and hyperparameter tuning to maximize F1 score.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Work Experience</h2>
+        
+        <div class="item-container">
+            <h3>Undergraduate Learning Assistant</h3>
+            <div class="meta-info">
+                <span>College of Science, Oregon State University</span>
+                <span>Sep. 2025 - Present</span>
             </div>
-        </section>
-    </main>
+            <ul>
+                <li>Supported 3 undergraduate CS courses per term, holding weekly office hours for a combined cohort of 120+ students and improving average section performance by an estimated 15%.</li>
+                <li>Facilitated active-learning activities and peer-mentoring sessions that contributed to a measurable increase in weekly student engagement and discussion participation.</li>
+                <li>Collaborated with 4 faculty members on quiz design, assignment rubrics, and weekly instructional planning meetings, reducing grading turnaround time by approximately 20%.</li>
+                <li>Provided individualized guidance in data structures, algorithms, and AI fundamentals, helping students complete complex programming assignments with higher first-submission pass rates.</li>
+            </ul>
+        </div>
+
+        <div class="item-container">
+            <h3>Undergraduate Lab Assistant</h3>
+            <div class="meta-info">
+                <span>College of Engineering (MIME), Oregon State University</span>
+                <span>Jun. 2024 - Present</span>
+            </div>
+            <ul>
+                <li>Participated in 50+ weekly lab meetings and research discussions, contributing literature reviews and technical summaries to support 2 ongoing faculty-led research projects.</li>
+                <li>Co-presented 3 progress reports to a team of 10 graduate students and faculty, communicating experimental findings and proposing data-driven design improvements.</li>
+                <li>Collaborated with graduate researchers to evaluate project challenges, performing quantitative progress assessments that reduced experimental iteration cycles by ~25%.</li>
+                <li>Strengthened laboratory collaboration and scientific communication skills through sustained engagement with a multidisciplinary research environment of 15+ team members.</li>
+            </ul>
+        </div>
+
+        <div class="item-container">
+            <h3>Administrative Program Assistant</h3>
+            <div class="meta-info">
+                <span>College of Education, Oregon State University</span>
+                <span>Aug. 2025 - Jan. 2026</span>
+            </div>
+            <ul>
+                <li>Coordinated workflows across 4 academic departments, streamlining inter-departmental communication and reducing document-processing delays by approximately 30%.</li>
+                <li>Managed and organized 200+ academic and administrative records, maintaining accuracy and accessibility of files that supported 500 student and faculty requests per term.</li>
+                <li>Assisted 60+ students and faculty per month with academic processes, advising requests, and administrative inquiries, achieving consistent positive feedback on service quality.</li>
+                <li>Optimized day-to-day office operations by introducing a structured task-tracking system, improving team productivity and on-time task completion rates.</li>
+            </ul>
+        </div>
+
+        <div class="item-container">
+            <h3>Undergraduate Research Assistant</h3>
+            <div class="meta-info">
+                <span>College of Engineering - Civil Engineering, Oregon State University</span>
+                <span>Summer 2024</span>
+            </div>
+            <ul>
+                <li>Contributed to a federally relevant research project analyzing earthquake and tsunami impacts on 10 critical infrastructure systems, supporting hazard-resilience planning efforts.</li>
+                <li>Ran and post-processed 30 simulation scenarios for structural vulnerability assessment, generating performance curves used in research publications and reports.</li>
+                <li>Applied interdisciplinary methods combining civil engineering, statistics, and computational modeling to quantify infrastructure fragility with 90%+ data fidelity across test cases.</li>
+                <li>Summarized findings in 2 internal technical reports and supported the preparation of academic presentations delivered to faculty panels of 12 researchers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Extracurricular Activities</h2>
+        <ul>
+            <li><strong>Sports:</strong> Active participant in competitive and recreational football.</li>
+            <li><strong>Arts & Culture:</strong> Passionate about dancing, focusing on rhythm, coordination, and creative expression.</li>
+        </ul>
+    </section>
 
 </body>
 </html>
