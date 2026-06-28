@@ -146,6 +146,12 @@
             margin-top: 0;
             margin-bottom: 0.5rem;
         }
+        .project-summary {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
         ul {
             margin-top: 0;
             padding-left: 20px;
@@ -155,14 +161,14 @@
             text-align: justify;
         }
         .item-container {
-            margin-bottom: 2.2rem;
+            margin-bottom: 2.5rem;
         }
 
         /* Figure Gallery Styling */
         .project-gallery {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 20px;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -180,7 +186,16 @@
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             object-fit: cover;
-            aspect-ratio: 16/9; /* Adjust this if your images are a different shape */
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .project-figure img:hover {
+            opacity: 0.8;
+        }
+        .project-figure img.contain-img {
+            object-fit: contain;
+            background-color: #f5f5f5;
         }
         .figure-caption {
             font-size: 0.85rem;
@@ -189,11 +204,65 @@
             font-style: italic;
         }
 
+        /* Modal (Lightbox) Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1100px;
+            border-radius: 4px;
+        }
+        #modalCaption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 1100px;
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0;
+            font-size: 1.1rem;
+        }
+        .modal-content, #modalCaption {
+            animation-name: zoom;
+            animation-duration: 0.3s;
+        }
+        @keyframes zoom {
+            from {transform: scale(0.95); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-modal:hover, .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .meta-info { flex-direction: column; }
             .nav-container { gap: 15px; flex-wrap: wrap; }
             .project-gallery { flex-direction: column; }
+            .modal-content { width: 100%; }
         }
     </style>
 </head>
@@ -214,7 +283,6 @@
         <!-- ================= HOME PAGE ================= -->
         <div id="home" class="page active">
             <header>
-                <!-- Remember to keep your profile.jpg in the repository -->
                 <img src="profile.jpg" alt="Tashfia Tabassum" class="profile-img">
                 <h1>Tashfia Tabassum</h1>
                 <div class="subtitle">Computer Science (AI Focus) | Oregon State University</div>
@@ -263,6 +331,7 @@
             <div class="item-container">
                 <h3>Hospital Management Web Application</h3>
                 <p class="tech-stack">Node.js | Express | MySQL | Handlebars</p>
+                <p class="project-summary">This full-stack web application was engineered to streamline hospital administration by digitizing patient records, appointment scheduling, and departmental workflows. It provides a robust, centralized database solution to ensure data integrity and seamless operational efficiency for healthcare staff.</p>
                 <ul>
                     <li>Developed a full-stack hospital management system supporting complete CRUD operations across 6 entities: Departments, Doctors, Patients, Appointments, DoctorAppointments, and Medical Records.</li>
                     <li>Implemented all write operations through MySQL stored procedures (AddDepartment, UpdateDoctor, DeletePatient, ResetHospitalDB) to enforce data integrity at the database layer.</li>
@@ -270,19 +339,17 @@
                     <li>Configured a MySQL connection pool (mysql2) with a 10-connection limit and integrated method-override middleware to support full HTTP verb semantics from HTML forms.</li>
                 </ul>
                 
-                <!-- Figures for Hospital Management -->
                 <div class="project-gallery">
                     <figure class="project-figure">
-                        <!-- Replace src with your actual image file names -->
-                        <img src="hospital-fig1.png" alt="Hospital Management Figure 1">
+                        <img src="hospital-fig1.png" alt="Figure 1: Dashboard and User Interface Overview" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 1: Dashboard and User Interface Overview</figcaption>
                     </figure>
                     <figure class="project-figure">
-                        <img src="hospital-fig2.png" alt="Hospital Management Figure 2">
+                        <img src="hospital-fig2.png" alt="Figure 2: Entity Relationship Database Schema" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 2: Entity Relationship Database Schema</figcaption>
                     </figure>
                     <figure class="project-figure">
-                        <img src="hospital-fig3.png" alt="Hospital Management Figure 3">
+                        <img src="hospital-fig3.png" alt="Figure 3: Medical Records and Appointment System" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 3: Medical Records and Appointment System</figcaption>
                     </figure>
                 </div>
@@ -291,17 +358,30 @@
             <div class="item-container">
                 <h3>Medical Symptom RAG System</h3>
                 <p class="tech-stack">Python | PyTorch | MongoDB Atlas | Groq API | Llama 3 | SentenceTransformers</p>
+                <p class="project-summary">Addressing the need for accurate medical information retrieval, this system leverages Large Language Models and vector search to ground AI responses in verified medical data, significantly reducing hallucination in critical healthcare contexts.</p>
                 <ul>
                     <li>Architected and deployed an end-to-end Retrieval-Augmented Generation (RAG) pipeline to analyze user-reported symptoms and summarize relevant medical conditions using LLMs.</li>
                     <li>Engineered a data ingestion pipeline using Pandas and PyTorch, transforming a 246,000-row binary occurrence matrix into semantic text representations.</li>
                     <li>Implemented hardware-accelerated batch processing with Hugging Face Sentence Transformers (all-MiniLM-L6-v2) to generate dense vector embeddings at scale.</li>
                     <li>Configured MongoDB Atlas Vector Search indexing for rapid high-dimensional similarity queries; integrated Groq API with Llama 3 and strict system prompting to prevent hallucination.</li>
                 </ul>
+
+                <div class="project-gallery">
+                    <figure class="project-figure">
+                        <img src="Screenshot_45.png" alt="Figure 1: Database Vector Representation" class="contain-img" onclick="openModal(this.src, this.alt)">
+                        <figcaption class="figure-caption">Figure 1: Database Vector Representation</figcaption>
+                    </figure>
+                    <figure class="project-figure">
+                        <img src="Screenshot_46.png" alt="Figure 2: Query System and LLM Call Output" class="contain-img" onclick="openModal(this.src, this.alt)">
+                        <figcaption class="figure-caption">Figure 2: Query System and LLM Call Output</figcaption>
+                    </figure>
+                </div>
             </div>
 
             <div class="item-container">
                 <h3>Sentiment Analysis with Transformers</h3>
                 <p class="tech-stack">Python | PyTorch | XLM-RoBERTa | RoBERTa | DistilBERT | ALBERT</p>
+                <p class="project-summary">This research-oriented project focused on evaluating the performance trade-offs among various state-of-the-art BERT architectures, providing actionable insights into model selection for large-scale natural language processing tasks.</p>
                 <ul>
                     <li>Fine-tuned and benchmarked four BERT-variant models on a 1.6M-sample dataset with learning rate scheduling, early stopping, and class-weight balancing.</li>
                     <li>Built a unified evaluation framework tracking accuracy, precision, recall, and F1 with flexible per-model CLI inference and automatic tokenization.</li>
@@ -311,6 +391,7 @@
             <div class="item-container">
                 <h3>AI Health Symptom Checker</h3>
                 <p class="tech-stack">Python | XGBoost | MedSpaCy | SMOTE | SHAP | TF-IDF</p>
+                <p class="project-summary">Designed as a preliminary diagnostic tool, this application combines natural language processing with gradient boosting to interpret free-text symptoms, prioritizing patient urgency with transparent and explainable AI techniques.</p>
                 <ul>
                     <li>Built a clinical NLP system using MedSpaCy to extract symptoms from free text, classify conditions with an XGBoost + TF-IDF pipeline, and flag urgent symptoms via a rule-based severity engine.</li>
                     <li>Applied SMOTE for class imbalance, stratified k-fold cross-validation for robustness, and SHAP values for explainable per-condition predictions.</li>
@@ -320,6 +401,7 @@
             <div class="item-container">
                 <h3>Person Identification System</h3>
                 <p class="tech-stack">Python | TensorFlow | FaceNet | MTCNN | FastAPI | HTML | JS</p>
+                <p class="project-summary">A high-performance biometric pipeline designed for real-time facial recognition. By combining efficient detection algorithms with deep metric learning, the system offers reliable multi-person identification suitable for security and access control applications.</p>
                 <ul>
                     <li>Built a real-time face recognition pipeline using MTCNN detection and FaceNet embeddings with cosine similarity, achieving 0.5–1.0s per-image inference.</li>
                     <li>Served the model via a FastAPI REST endpoint with an HTML/JS web interface supporting multi-person identification with confidence scoring.</li>
@@ -329,6 +411,7 @@
             <div class="item-container">
                 <h3>Feedback Analyzer</h3>
                 <p class="tech-stack">Python | Scikit-learn | NLP | Supervised Classification</p>
+                <p class="project-summary">An automated machine learning pipeline built to process and classify unstructured user feedback, enabling data-driven decision-making through accurate sentiment and topic categorization.</p>
                 <ul>
                     <li>Built an end-to-end ML pipeline for feedback classification using TF-IDF feature extraction, cross-validated classifiers, and hyperparameter tuning to maximize F1 score.</li>
                 </ul>
@@ -337,23 +420,22 @@
             <div class="item-container">
                 <h3>EcoRoute</h3>
                 <p class="tech-stack">Python | React | Route Optimization | Geospatial APIs</p>
+                <p class="project-summary">EcoRoute tackles urban emissions by providing users with environmentally conscious navigation options. The application integrates real-time geospatial data to calculate and recommend the most carbon-efficient travel paths.</p>
                 <ul>
                     <li>Developed a full-stack app recommending low-carbon commute routes via graph traversal and real-time environmental data, with a React frontend and Python backend.</li>
                 </ul>
 
-                <!-- Figures for EcoRoute -->
                 <div class="project-gallery">
                     <figure class="project-figure">
-                        <!-- Replace src with your actual image file names -->
-                        <img src="ecoroute-fig1.png" alt="EcoRoute Figure 1">
+                        <img src="ecoroute-fig1.png" alt="Figure 1: Map Traversal Interface" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 1: Map Traversal Interface</figcaption>
                     </figure>
                     <figure class="project-figure">
-                        <img src="ecoroute-fig2.png" alt="EcoRoute Figure 2">
+                        <img src="ecoroute-fig2.png" alt="Figure 2: Route Optimization Data" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 2: Route Optimization Data</figcaption>
                     </figure>
                     <figure class="project-figure">
-                        <img src="ecoroute-fig3.png" alt="EcoRoute Figure 3">
+                        <img src="ecoroute-fig3.png" alt="Figure 3: Environmental Impact Analytics" onclick="openModal(this.src, this.alt)">
                         <figcaption class="figure-caption">Figure 3: Environmental Impact Analytics</figcaption>
                     </figure>
                 </div>
@@ -430,27 +512,49 @@
 
     </div>
 
-    <!-- JavaScript to handle navigation -->
+    <!-- The Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close-modal" onclick="closeModal(event)">&times;</span>
+        <img class="modal-content" id="fullScreenImg">
+        <div id="modalCaption"></div>
+    </div>
+
+    <!-- JavaScript to handle navigation and modal -->
     <script>
+        // Navigation Logic
         function showPage(pageId, element) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
 
-            // Show target page
             document.getElementById(pageId).classList.add('active');
 
-            // Update active state on navigation links
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => {
                 link.classList.remove('active');
             });
             element.classList.add('active');
             
-            // Scroll to top of the page upon navigation
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal (Lightbox) Logic
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("fullScreenImg");
+        const captionText = document.getElementById("modalCaption");
+
+        function openModal(src, alt) {
+            modal.style.display = "block";
+            modalImg.src = src;
+            captionText.innerHTML = alt;
+        }
+
+        function closeModal(event) {
+            // Close if user clicks the 'X' or anywhere on the dark background
+            if (!event || event.target === modal || event.target.className === 'close-modal') {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
