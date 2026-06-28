@@ -48,7 +48,7 @@
 
         /* Main Container */
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 3rem auto;
             padding: 0 2rem;
         }
@@ -158,10 +158,42 @@
             margin-bottom: 2.2rem;
         }
 
+        /* Figure Gallery Styling */
+        .project-gallery {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .project-figure {
+            flex: 1;
+            min-width: 250px;
+            margin: 0;
+            text-align: center;
+        }
+        .project-figure img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            object-fit: cover;
+            aspect-ratio: 16/9; /* Adjust this if your images are a different shape */
+        }
+        .figure-caption {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .meta-info { flex-direction: column; }
             .nav-container { gap: 15px; flex-wrap: wrap; }
+            .project-gallery { flex-direction: column; }
         }
     </style>
 </head>
@@ -182,10 +214,12 @@
         <!-- ================= HOME PAGE ================= -->
         <div id="home" class="page active">
             <header>
+                <!-- Remember to keep your profile.jpg in the repository -->
                 <img src="profile.jpg" alt="Tashfia Tabassum" class="profile-img">
                 <h1>Tashfia Tabassum</h1>
+                <div class="subtitle">Computer Science (AI Focus) | Oregon State University</div>
                 <div class="contact-info">
-                    <a href="mailto:tabassut@oregonstate.edu">tashfiat715@gmail.com</a> | 
+                    <a href="mailto:tabassut@oregonstate.edu">tabassut@oregonstate.edu</a> | 
                     <span>458-272-8932</span>
                 </div>
                 <div class="contact-info" style="margin-top: 0.3rem;">
@@ -196,28 +230,28 @@
 
             <section class="item-container">
                 <h2>Professional Summary</h2>
-                <p>AI-focused Computer Science student at Oregon State University building production-ready ML systems across NLP, computer vision, and classification. Experienced designing and evaluating full model pipelines, from data preprocessing and training to deployment via REST APIs. Consistent Dean's List honoree with hands-on research experience and a track record of delivering technical work in collaborative, deadline-driven environments.</p>
-            </section>
-
-            <section class="item-container">
-                <h2>Education</h2>
-                <h3>Oregon State University</h3>
-                <div class="meta-info">
-                    <span>Bachelor of Science in Computer Science (Artificial Intelligence Focus)</span>
-                    <span>Expected Jun 2027</span>
-                </div>
-                <ul>
-                    <li><strong>Honors & Standing:</strong> Dean's List, 8 Consecutive Terms | <strong>GPA:</strong> 3.82 / 4.00</li>
-                </ul>
+                <p>AI-focused Computer Science student at Oregon State University building production-ready ML systems across NLP, computer vision, and classification. Experienced designing and evaluating full model pipelines from data preprocessing and training to deployment via REST APIs. Consistent Dean's List honoree with hands-on research experience and a track record of delivering technical work in collaborative, deadline-driven environments.</p>
             </section>
 
             <section class="item-container">
                 <h2>Technical Skills</h2>
                 <ul>
                     <li><strong>Programming Languages:</strong> Python, Java, C/C++, JavaScript, SQL</li>
-                    <li><strong>Frameworks & Tools:</strong> TensorFlow, PyTorch, Scikit-learn, FastAPI, Django, React, MongoDB Atlas Vector Search</li>
-                    <li><strong>Technical Areas:</strong> Machine Learning, NLP, Computer Vision, Generative AI (RAG), Data Analysis</li>
+                    <li><strong>Frameworks & Tools:</strong> TensorFlow, PyTorch, Scikit-learn, FastAPI, Django, React, MongoDB Atlas Vector Search, Node.js, Express.js, MySQL</li>
+                    <li><strong>Technical Areas:</strong> Machine Learning, NLP, Computer Vision, Generative AI (RAG), Data Analysis, RESTful APIs, Full-Stack Web Development</li>
                     <li><strong>Version Control:</strong> Git, GitHub</li>
+                </ul>
+            </section>
+
+            <section class="item-container">
+                <h2>Education</h2>
+                <h3>Oregon State University</h3>
+                <div class="meta-info">
+                    <span>Bachelor of Science in Computer Science — Artificial Intelligence Focus</span>
+                    <span>Corvallis, OR | Expected June 2027</span>
+                </div>
+                <ul>
+                    <li><strong>Honors & Standing:</strong> Dean's List, 8 Consecutive Terms | <strong>GPA:</strong> 3.82</li>
                 </ul>
             </section>
         </div>
@@ -227,47 +261,74 @@
             <h2>Featured Projects</h2>
             
             <div class="item-container">
-                <h3>Medical Symptom Retrieval-Augmented Generation (RAG) System</h3>
-                <p class="tech-stack">Python, PyTorch, MongoDB Atlas, Groq API, Llama 3, SentenceTransformers</p>
+                <h3>Hospital Management Web Application</h3>
+                <p class="tech-stack">Node.js | Express | MySQL | Handlebars</p>
                 <ul>
-                    <li>Architected and deployed an end-to-end RAG pipeline to analyze user-reported symptoms and summarize relevant medical conditions using Large Language Models.</li>
-                    <li>Engineered a high-performance data ingestion pipeline using Pandas and PyTorch, transforming a 246,000-row binary occurrence matrix into semantic text representations.</li>
-                    <li>Implemented hardware-accelerated batch processing with Hugging Face Sentence Transformers (all-MiniLM-L6-v2) to generate and process dense vector embeddings efficiently.</li>
-                    <li>Configured a cloud-based MongoDB Atlas database with customized Vector Search indexing to execute rapid mathematical similarity queries on high-dimensional data.</li>
-                    <li>Integrated the Groq API to deploy open-weight LLMs (Llama 3), utilizing strict system prompting to prevent hallucination and ensure output was grounded in retrieved dataset context.</li>
+                    <li>Developed a full-stack hospital management system supporting complete CRUD operations across 6 entities: Departments, Doctors, Patients, Appointments, DoctorAppointments, and Medical Records.</li>
+                    <li>Implemented all write operations through MySQL stored procedures (AddDepartment, UpdateDoctor, DeletePatient, ResetHospitalDB) to enforce data integrity at the database layer.</li>
+                    <li>Designed a RESTful route architecture with 30+ endpoints (GET/POST/PUT/DELETE) and server-side rendered UI using Express-Handlebars templates.</li>
+                    <li>Configured a MySQL connection pool (mysql2) with a 10-connection limit and integrated method-override middleware to support full HTTP verb semantics from HTML forms.</li>
+                </ul>
+                
+                <!-- Figures for Hospital Management -->
+                <div class="project-gallery">
+                    <figure class="project-figure">
+                        <!-- Replace src with your actual image file names -->
+                        <img src="hospital-fig1.jpg" alt="Hospital Management Figure 1">
+                        <figcaption class="figure-caption">Figure 1: Dashboard and User Interface Overview</figcaption>
+                    </figure>
+                    <figure class="project-figure">
+                        <img src="hospital-fig2.jpg" alt="Hospital Management Figure 2">
+                        <figcaption class="figure-caption">Figure 2: Entity Relationship Database Schema</figcaption>
+                    </figure>
+                    <figure class="project-figure">
+                        <img src="hospital-fig3.jpg" alt="Hospital Management Figure 3">
+                        <figcaption class="figure-caption">Figure 3: Medical Records and Appointment System</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="item-container">
+                <h3>Medical Symptom RAG System</h3>
+                <p class="tech-stack">Python | PyTorch | MongoDB Atlas | Groq API | Llama 3 | SentenceTransformers</p>
+                <ul>
+                    <li>Architected and deployed an end-to-end Retrieval-Augmented Generation (RAG) pipeline to analyze user-reported symptoms and summarize relevant medical conditions using LLMs.</li>
+                    <li>Engineered a data ingestion pipeline using Pandas and PyTorch, transforming a 246,000-row binary occurrence matrix into semantic text representations.</li>
+                    <li>Implemented hardware-accelerated batch processing with Hugging Face Sentence Transformers (all-MiniLM-L6-v2) to generate dense vector embeddings at scale.</li>
+                    <li>Configured MongoDB Atlas Vector Search indexing for rapid high-dimensional similarity queries; integrated Groq API with Llama 3 and strict system prompting to prevent hallucination.</li>
                 </ul>
             </div>
 
             <div class="item-container">
                 <h3>Sentiment Analysis with Transformers</h3>
-                <p class="tech-stack">Python, PyTorch, XLM-RoBERTa, RoBERTa, DistilBERT, ALBERT</p>
+                <p class="tech-stack">Python | PyTorch | XLM-RoBERTa | RoBERTa | DistilBERT | ALBERT</p>
                 <ul>
                     <li>Fine-tuned and benchmarked four BERT-variant models on a 1.6M-sample dataset with learning rate scheduling, early stopping, and class-weight balancing.</li>
-                    <li>Built a unified evaluation framework tracking accuracy, precision, recall, and F1; supported flexible per-model CLI inference with automatic tokenization.</li>
+                    <li>Built a unified evaluation framework tracking accuracy, precision, recall, and F1 with flexible per-model CLI inference and automatic tokenization.</li>
                 </ul>
             </div>
 
             <div class="item-container">
                 <h3>AI Health Symptom Checker</h3>
-                <p class="tech-stack">Python, XGBoost, MedSpaCy, SMOTE, SHAP, TF-IDF</p>
+                <p class="tech-stack">Python | XGBoost | MedSpaCy | SMOTE | SHAP | TF-IDF</p>
                 <ul>
                     <li>Built a clinical NLP system using MedSpaCy to extract symptoms from free text, classify conditions with an XGBoost + TF-IDF pipeline, and flag urgent symptoms via a rule-based severity engine.</li>
-                    <li>Applied SMOTE for class imbalance, stratified k-fold cross-validation for robustness, and SHAP for explainable per-condition predictions.</li>
+                    <li>Applied SMOTE for class imbalance, stratified k-fold cross-validation for robustness, and SHAP values for explainable per-condition predictions.</li>
                 </ul>
             </div>
 
             <div class="item-container">
                 <h3>Person Identification System</h3>
-                <p class="tech-stack">Python, TensorFlow, FaceNet, MTCNN, FastAPI, HTML, JS</p>
+                <p class="tech-stack">Python | TensorFlow | FaceNet | MTCNN | FastAPI | HTML | JS</p>
                 <ul>
-                    <li>Built a real-time face recognition pipeline using MTCNN for detection and FaceNet embeddings with cosine similarity, achieving 0.5–1.0s per-image inference.</li>
-                    <li>Served the model via a FastAPI REST endpoint and built an HTML/JS web interface for multi-person identification with confidence scoring.</li>
+                    <li>Built a real-time face recognition pipeline using MTCNN detection and FaceNet embeddings with cosine similarity, achieving 0.5–1.0s per-image inference.</li>
+                    <li>Served the model via a FastAPI REST endpoint with an HTML/JS web interface supporting multi-person identification with confidence scoring.</li>
                 </ul>
             </div>
 
             <div class="item-container">
                 <h3>Feedback Analyzer</h3>
-                <p class="tech-stack">Python, Scikit-learn, NLP, Supervised Classification</p>
+                <p class="tech-stack">Python | Scikit-learn | NLP | Supervised Classification</p>
                 <ul>
                     <li>Built an end-to-end ML pipeline for feedback classification using TF-IDF feature extraction, cross-validated classifiers, and hyperparameter tuning to maximize F1 score.</li>
                 </ul>
@@ -275,10 +336,27 @@
 
             <div class="item-container">
                 <h3>EcoRoute</h3>
-                <p class="tech-stack">Python, React, Route Optimization, Geospatial APIs</p>
+                <p class="tech-stack">Python | React | Route Optimization | Geospatial APIs</p>
                 <ul>
                     <li>Developed a full-stack app recommending low-carbon commute routes via graph traversal and real-time environmental data, with a React frontend and Python backend.</li>
                 </ul>
+
+                <!-- Figures for EcoRoute -->
+                <div class="project-gallery">
+                    <figure class="project-figure">
+                        <!-- Replace src with your actual image file names -->
+                        <img src="ecoroute-fig1.jpg" alt="EcoRoute Figure 1">
+                        <figcaption class="figure-caption">Figure 1: Map Traversal Interface</figcaption>
+                    </figure>
+                    <figure class="project-figure">
+                        <img src="ecoroute-fig2.jpg" alt="EcoRoute Figure 2">
+                        <figcaption class="figure-caption">Figure 2: Route Optimization Data</figcaption>
+                    </figure>
+                    <figure class="project-figure">
+                        <img src="ecoroute-fig3.jpg" alt="EcoRoute Figure 3">
+                        <figcaption class="figure-caption">Figure 3: Environmental Impact Analytics</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
 
@@ -289,27 +367,27 @@
             <div class="item-container">
                 <h3>Undergraduate Learning Assistant</h3>
                 <div class="meta-info">
-                    <span>College of Science, Oregon State University</span>
+                    <span>College of Science, Oregon State University | Corvallis, OR</span>
                     <span>Sep 2025 – Present</span>
                 </div>
                 <ul>
                     <li>Supported 3 undergraduate CS courses per term, holding weekly office hours for a combined cohort of 120+ students and improving average section performance by an estimated 15%.</li>
-                    <li>Collaborated with 4 faculty members on quiz design, assignment rubrics, and weekly instructional planning meetings, reducing grading turnaround time by approximately 20%.</li>
+                    <li>Collaborated with 4 faculty members on quiz design, assignment rubrics, and instructional planning, reducing grading turnaround time by approximately 20%.</li>
                     <li>Provided individualized guidance in data structures, algorithms, and AI fundamentals, helping students complete complex programming assignments with higher first-submission pass rates.</li>
-                    <li>Facilitated active-learning activities and peer-mentoring sessions that contributed to a measurable increase in weekly student engagement and discussion participation.</li>
+                    <li>Facilitated active-learning activities and peer-mentoring sessions that contributed to measurable increases in weekly student engagement and discussion participation.</li>
                 </ul>
             </div>
 
             <div class="item-container">
                 <h3>Undergraduate Lab Assistant</h3>
                 <div class="meta-info">
-                    <span>College of Engineering (MIME), Oregon State University</span>
+                    <span>College of Engineering (MIME), Oregon State University | Corvallis, OR</span>
                     <span>Jun 2024 – Present</span>
                 </div>
                 <ul>
                     <li>Participated in 50+ weekly lab meetings and research discussions, contributing literature reviews and technical summaries to support 2 ongoing faculty-led research projects.</li>
                     <li>Co-presented 3 progress reports to a team of 10 graduate students and faculty, communicating experimental findings and proposing data-driven design improvements.</li>
-                    <li>Collaborated with graduate researchers to evaluate project challenges, performing quantitative progress assessments that reduced experimental iteration cycles by approximately 25%.</li>
+                    <li>Performed quantitative progress assessments in collaboration with graduate researchers, reducing experimental iteration cycles by approximately 25%.</li>
                     <li>Contributed to a multidisciplinary research environment of 15+ team members, strengthening scientific communication and cross-functional collaboration skills.</li>
                 </ul>
             </div>
@@ -317,7 +395,7 @@
             <div class="item-container">
                 <h3>Administrative Program Assistant</h3>
                 <div class="meta-info">
-                    <span>College of Education, Oregon State University</span>
+                    <span>College of Education, Oregon State University | Corvallis, OR</span>
                     <span>Aug 2025 – Jan 2026</span>
                 </div>
                 <ul>
@@ -330,13 +408,13 @@
             <div class="item-container">
                 <h3>Undergraduate Research Assistant</h3>
                 <div class="meta-info">
-                    <span>College of Engineering, Civil Engineering, Oregon State University</span>
+                    <span>College of Engineering, Civil Engineering, Oregon State University | Corvallis, OR</span>
                     <span>Summer 2024</span>
                 </div>
                 <ul>
                     <li>Ran and post-processed 30 simulation scenarios for structural vulnerability assessment, generating performance curves used in research publications and reports.</li>
                     <li>Applied computational modeling and statistics to quantify infrastructure fragility across 10 critical systems, achieving 90%+ data fidelity across test cases.</li>
-                    <li>Summarized findings in 2 internal technical reports and supported preparation of academic presentations delivered to faculty panels of 12 researchers.</li>
+                    <li>Summarized findings in 2 internal technical reports and supported academic presentations delivered to faculty panels of 12 researchers.</li>
                 </ul>
             </div>
         </div>
@@ -347,16 +425,6 @@
             <div class="item-container">
                 <p>Academic and professional references from Oregon State University faculty and research advisors are available upon request.</p>
                 <p>Please contact me via email at <a href="mailto:tabassut@oregonstate.edu" style="color: #0056b3; text-decoration: none;">tabassut@oregonstate.edu</a> for detailed contact information of my references.</p>
-                
-                <!-- Placeholder for future references if you want to add them manually later -->
-                <!-- 
-                <br>
-                <h3>[Reference Name]</h3>
-                <div class="meta-info">
-                    <span>[Reference Title/Position], Oregon State University</span>
-                </div>
-                <p>Email: [Reference Email] | Phone: [Reference Phone]</p>
-                -->
             </div>
         </div>
 
