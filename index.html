@@ -29,7 +29,8 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
+            flex-wrap: wrap;
         }
         .nav-link {
             color: #fff;
@@ -189,6 +190,9 @@
         .results-table tr:hover {
             background-color: #f1f5f9;
         }
+        .results-table td.left-align {
+            text-align: left;
+        }
 
         /* Console Log / Dashboard Simulation Styles */
         .console-block {
@@ -329,7 +333,7 @@
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .meta-info { flex-direction: column; }
-            .nav-container { gap: 15px; flex-wrap: wrap; }
+            .nav-container { gap: 15px; }
             .project-gallery { flex-direction: column; }
             .modal-content { width: 100%; }
         }
@@ -343,6 +347,8 @@
             <a class="nav-link active" onclick="showPage('home', this)">Home</a>
             <a class="nav-link" onclick="showPage('projects', this)">Projects</a>
             <a class="nav-link" onclick="showPage('experience', this)">Experience</a>
+            <a class="nav-link" onclick="showPage('courses', this)">Courses</a>
+           
         </div>
     </nav>
 
@@ -353,10 +359,10 @@
             <header>
                 <img src="profile.jpg" alt="Tashfia Tabassum" class="profile-img">
                 <h1>Tashfia Tabassum</h1>
-                
+               
                 <div class="contact-info">
                     <a href="mailto:tabassut@oregonstate.edu">tabassut@oregonstate.edu</a> | <a href="mailto:tashfiat715@gmail.com">tashfiat715@gmail.com</a>
-                    <span>458-272-8932</span>
+                   | <span>458-272-8932</span>
                 </div>
                 <div class="contact-info" style="margin-top: 0.3rem;">
                     <a href="https://linkedin.com/in/tashfia-tabassum-619781410" target="_blank">LinkedIn</a> | 
@@ -679,6 +685,107 @@
                     <li>Applied computational modeling and statistics to quantify infrastructure fragility across 10 critical systems, achieving 90%+ data fidelity across test cases.</li>
                     <li>Summarized findings in 2 internal technical reports and supported academic presentations delivered to faculty panels of 12 researchers.</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- ================= COURSES PAGE ================= -->
+        <div id="courses" class="page">
+            <h2>Academic Coursework</h2>
+            <p>Institutional student records from Oregon State University tracking degree completion progress within the Bachelor of Science in Computer Science curriculum (Artificial Intelligence focus area).</p>
+            
+            <div class="item-container">
+                <h3>Computer Science & Engineering</h3>
+                <div style="overflow-x: auto;">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Title</th>
+                                <th>Credits</th>
+                                <th>Term</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CS 162</td><td class="left-align">Intro to Computer Science II</td><td>4</td><td>Spring 2024</td><td>A</td></tr>
+                            <tr><td>CS 261</td><td class="left-align">Data Structures</td><td>4</td><td>Fall 2024</td><td>B+</td></tr>
+                            <tr><td>CS 271</td><td class="left-align">Computer Arch & Assembler Language</td><td>4</td><td>Spring 2025</td><td>A</td></tr>
+                            <tr><td>CS 290</td><td class="left-align">Web Development</td><td>4</td><td>Fall 2024</td><td>A</td></tr>
+                            <tr><td>CS 325</td><td class="left-align">Analysis of Algorithms</td><td>4</td><td>Winter 2025</td><td>A</td></tr>
+                            <tr><td>CS 340</td><td class="left-align">Introduction to Databases</td><td>4</td><td>Fall 2025</td><td>A-</td></tr>
+                            <tr><td>CS 361</td><td class="left-align">Fundamentals of Software Engineering I</td><td>4</td><td>Fall 2025</td><td>A</td></tr>
+                            <tr><td>CS 362</td><td class="left-align">Fundamentals of Software Engineering II</td><td>4</td><td>Winter 2026</td><td><span style="color: #0066cc; font-weight: bold;">In Progress</span></td></tr>
+                            <tr><td>CS 372</td><td class="left-align">Introduction to Computer Networks</td><td>4</td><td>Fall 2025</td><td>B</td></tr>
+                            <tr><td>CS 373</td><td class="left-align">Defense Against the Dark Arts</td><td>4</td><td>Winter 2026</td><td><span style="color: #0066cc; font-weight: bold;">In Progress</span></td></tr>
+                            <tr><td>CS 374</td><td class="left-align">Operating Systems I</td><td>4</td><td>Fall 2025</td><td>A</td></tr>
+                            <tr><td>CS 381</td><td class="left-align">Programming Language Fundamentals</td><td>4</td><td>Spring 2025</td><td>A</td></tr>
+                            <tr><td>ENGR 100</td><td class="left-align">The OSU Engineering Student</td><td>3</td><td>Spring 2023</td><td>A</td></tr>
+                            <tr><td>ENGR 102</td><td class="left-align">Design Engineering and Problem Solving</td><td>3</td><td>Fall 2023</td><td>A</td></tr>
+                            <tr><td>ENGR 103</td><td class="left-align">Engineering Computation & Algorithmic Thinking</td><td>3</td><td>Winter 2024</td><td>A</td></tr>
+                            <tr><td>SCI 004</td><td class="left-align">Int/Learning Asst Pedagogy</td><td>0</td><td>Fall 2025</td><td>SC</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="item-container">
+                <h3>Mathematics & Statistics</h3>
+                <div style="overflow-x: auto;">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Title</th>
+                                <th>Credits</th>
+                                <th>Term</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MTH 231</td><td class="left-align">Elements of Discrete Mathematics I</td><td>4</td><td>Spring 2023</td><td>B</td></tr>
+                            <tr><td>MTH 251</td><td class="left-align">Differential Calculus</td><td>4</td><td>Winter 2024</td><td>A</td></tr>
+                            <tr><td>MTH 252</td><td class="left-align">Integral Calculus</td><td>4</td><td>Spring 2024</td><td>A-</td></tr>
+                            <tr><td>MTH 254</td><td class="left-align">Vector Calculus I</td><td>4</td><td>Winter 2026</td><td><span style="color: #0066cc; font-weight: bold;">In Progress</span></td></tr>
+                            <tr><td>ST 314</td><td class="left-align">Introduction to Statistics for Engineers</td><td>3</td><td>Winter 2025</td><td>A</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="item-container">
+                <h3>Writing, Communication & Core Electives</h3>
+                <div style="overflow-x: auto;">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Title</th>
+                                <th>Credits</th>
+                                <th>Term</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>WR 121Z</td><td class="left-align">Composition I</td><td>4</td><td>Fall 2023</td><td>A</td></tr>
+                            <tr><td>WR 214</td><td class="left-align">Writing in Business</td><td>3</td><td>Fall 2024</td><td>A</td></tr>
+                            <tr><td>WR 227Z</td><td class="left-align">Technical Writing</td><td>4</td><td>Spring 2025</td><td>A</td></tr>
+                            <tr><td>COMM 111</td><td class="left-align">Public Speaking</td><td>3</td><td>Spring 2023</td><td>C</td></tr>
+                            <tr><td>GEOG 103</td><td class="left-align">The Human Planet</td><td>3</td><td>Spring 2024</td><td>A</td></tr>
+                            <tr><td>GEOG 106</td><td class="left-align">Challenges - Global North</td><td>3</td><td>Fall 2023</td><td>A</td></tr>
+                            <tr><td>ART 101</td><td class="left-align">Intro to the Visual Arts</td><td>3</td><td>Fall 2024</td><td>A</td></tr>
+                            <tr><td>ANTH 101</td><td class="left-align">Introduction to Anthropology</td><td>3</td><td>Winter 2024</td><td>A</td></tr>
+                            <tr><td>GEO 100</td><td class="left-align">Natural Disasters</td><td>4</td><td>Winter 2025</td><td>A</td></tr>
+                            <tr><td>SUS 102</td><td class="left-align">Intro to Environmental Science</td><td>4</td><td>Winter 2024</td><td>A</td></tr>
+                            <tr><td>BI 103</td><td class="left-align">Human Anatomy, Physiology & Disease</td><td>4</td><td>Spring 2025</td><td>A</td></tr>
+                            <tr><td>WGSS 223</td><td class="left-align">Intro to WGSS</td><td>3</td><td>Winter 2025</td><td>A</td></tr>
+                            <tr><td>H 344</td><td class="left-align">Foundations of Environmental Health</td><td>3</td><td>Winter 2026</td><td><span style="color: #0066cc; font-weight: bold;">In Progress</span></td></tr>
+                            <tr><td>ALS 139</td><td class="left-align">International First Year Experience</td><td>3</td><td>Spring 2023</td><td>P</td></tr>
+                            <tr><td>MUS 108</td><td class="left-align">Music Cultures / Native American Flute</td><td>3</td><td>Spring 2024</td><td>A</td></tr>
+                            <tr><td>HHS 231</td><td class="left-align">Lifetime Fitness for Health</td><td>2</td><td>Fall 2023</td><td>A</td></tr>
+                            <tr><td>PAC 113</td><td class="left-align">Badminton I</td><td>1</td><td>Winter 2024</td><td>A</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
