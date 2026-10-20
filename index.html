@@ -340,6 +340,29 @@
             text-decoration: none;
         }
 
+        /* In-Progress Badge */
+        .status-badge {
+            display: inline-block;
+            background-color: #e8f1fb;
+            color: #0056b3;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Copyright Notice */
+        .copyright-notice {
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+            padding-top: 0.6rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .meta-info { flex-direction: column; }
@@ -387,9 +410,9 @@
             <section class="item-container">
                 <h2>Technical Skills</h2>
                 <ul>
-                    <li><strong>Programming Languages:</strong> Python, Java, C/C++, JavaScript, SQL</li>
-                    <li><strong>Frameworks & Tools:</strong> TensorFlow, PyTorch, Scikit-learn, FastAPI, Django, React, MongoDB Atlas Vector Search, Node.js, Express.js, MySQL</li>
-                    <li><strong>Technical Areas:</strong> Machine Learning, NLP, Computer Vision, Generative AI (RAG), Data Analysis, RESTful APIs, Full-Stack Web Development</li>
+                    <li><strong>Programming Languages:</strong> Python, Java, C/C++, JavaScript, SQL, PHP, Ruby, Perl, MATLAB, R</li>
+                    <li><strong>Frameworks & Tools:</strong> TensorFlow, PyTorch, Scikit-learn, FastAPI, Django, React, MongoDB Atlas Vector Search, Node.js, Express.js, MySQL, Android Studio</li>
+                    <li><strong>Technical Areas:</strong> Machine Learning, NLP, Computer Vision, Generative AI (RAG), Data Analysis, RESTful APIs, Full-Stack Web Development, Android App Development</li>
                     <li><strong>Version Control:</strong> Git, GitHub</li>
                 </ul>
             </section>
@@ -409,6 +432,47 @@
 
         <!-- ================= PROJECTS PAGE ================= -->
         <div id="projects" class="page">
+
+            <!-- ===== CURRENTLY WORKING ON ===== -->
+            <section class="item-container">
+                <h2>Currently Working On</h2>
+
+                <div class="item-container">
+                    <h3>SafeTrail: Community Reports + Open Map Data for Safety-Aware Travel Decision Support <span class="status-badge">In Progress</span></h3>
+                    <div class="meta-info">
+                        <span>EECS Capstone, Oregon State University</span>
+                        <span>30-Week Project</span>
+                    </div>
+                    <p class="tech-stack">Geospatial Data Engineering | GIS | Web Development | Routing | Data Science | Responsible AI</p>
+                    <p class="project-summary">SafeTrail is an interactive web application that supports travelers' decision-making in unfamiliar places. Unlike navigation tools that only minimize time or distance, it combines open geographic data, public transport and fare information, and moderated community reports to give safety-focused recommendations with clear explanations.</p>
+                    <ul>
+                        <li>Designing safety-aware routing that factors in street lighting, traffic, and time-decayed incident reports.</li>
+                        <li>Providing transportation fare estimates and information on legitimate taxi stands and reputable venues to help travelers avoid common scams.</li>
+                        <li>Building moderated community reporting with evidence-based alerts, configurable thresholds, and a venue dispute process.</li>
+                        <li>Applying Responsible AI safeguards against neighborhood stigmatization, defamation, privacy breaches, and reporting bias, with alerts limited to incidents and observations rather than characterizations of residents.</li>
+                        <li>Launching with a single corridor/city and expanding data sources and community reports over time.</li>
+                    </ul>
+                    <p class="copyright-notice">&copy; 2026 Tashfia Tabassum. All rights reserved. The SafeTrail name, description, design, and content on this page may not be copied, reproduced, or reused without written permission.</p>
+                </div>
+
+                <div class="item-container">
+                    <h3>Offline Android Field-Mapping App for Agricultural Traceability <span class="status-badge">In Progress</span></h3>
+                    <div class="meta-info">
+                        <span>CS46X Capstone, Oregon State University</span>
+                        <span>30-Week Project</span>
+                    </div>
+                    <p class="tech-stack">Android | PostGIS | AWS | Offline-First | Geospatial Data</p>
+                    <p class="project-summary">An Android application that lets agronomists collect field-level data to support traceability in an agricultural production chain. It replaces a legacy tool that was difficult to use and adapt, giving the project team a system they can manage directly.</p>
+                    <ul>
+                        <li>Capturing field perimeters and, when needed, access routes to each field.</li>
+                        <li>Storing collected data directly in a PostGIS database on AWS.</li>
+                        <li>Supporting offline fieldwork for areas with unreliable connectivity, with in-app topology checks where feasible.</li>
+                        <li>Designing for easy updates by non-expert staff and coordinating with an international partner across a ~9-hour time difference.</li>
+                    </ul>
+                    <p class="project-summary">For field mapping queries, please <a href="https://virunga.org/contact-us/" target="_blank" rel="noopener noreferrer" style="color: #0056b3;">contact Virunga</a>.</p>
+                </div>
+            </section>
+
             <h2>Featured Projects</h2>
             
             <div class="item-container">
